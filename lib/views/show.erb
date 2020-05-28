@@ -1,0 +1,41 @@
+<html>
+
+  <head>
+    <title>Voir un potin</title>
+  </head>
+
+  <body>
+
+    <h1>Voilà le potin que tu a demander !</h1>
+
+    <p>
+      Voici la page du potin n°<%= id %> </br>
+      Son auteur : <%= gossip.author %> </br>
+      Le contenu du potin : <%= gossip.content %> </br>
+
+      commentaire : 
+      <% gossip.comments.each_index do |i| %>
+
+        <% if i == 0 %>
+          <%= i+1 %>
+          )
+          <%= gossip.comments[i] %><br/>
+        <% else %>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <%= i+1 %>
+          )
+          <%= gossip.comments[i] %><br/>
+        <% end %>
+      <% end %>
+
+      <form action='/gossips/<%= id %>/' method='POST'>
+      Ajouter un nouveau commentaire: <input type='text' name='com'>
+      <input type='submit'></br></br></br>
+      </form>
+    </p>
+
+    <p> Tu souhaite modifier le potin. Clique <a href="/gossips/<%= id %>/edit/">ICI</a></br></br></br> <p>
+
+    <p> <a href="/">Lien</a> pour revenir à la page des potins<p>
+  </body>
+</html>
